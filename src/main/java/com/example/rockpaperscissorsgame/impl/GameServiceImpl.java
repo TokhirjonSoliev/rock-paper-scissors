@@ -9,6 +9,8 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
+
 @Service
 public class GameServiceImpl implements GameService {
     @Override
@@ -24,5 +26,11 @@ public class GameServiceImpl implements GameService {
 
         ResultDto result = response.readEntity(ResultDto.class);
         return result.getBody();
+    }
+
+    public String getCustomChoice() {
+        String[] arr = {"rock", "paper", "scissors"};
+        Random random = new Random();
+        return arr[random.nextInt(arr.length)];
     }
 }
